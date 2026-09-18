@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/hooks/useAuth";
 import type { StaffRole } from "@/lib/types";
-import { AppHeader } from "./AppHeader";
+import { AppRail } from "./AppRail";
 
 export function AuthGuard({
   allowedRoles,
@@ -37,8 +37,10 @@ export function AuthGuard({
 
   return (
     <div className="min-h-screen bg-[#151312]">
-      <AppHeader />
-      <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
+      <AppRail />
+      <main className="min-h-screen pl-20">
+        <div className="px-8 py-8">{children}</div>
+      </main>
     </div>
   );
 }
