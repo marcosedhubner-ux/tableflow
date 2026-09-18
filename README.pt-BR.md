@@ -1,4 +1,4 @@
-# TableFlow
+# The Pass
 
 Gestão de salão, pedidos e cozinha em tempo real para restaurantes. O garçom abre uma mesa, envia o pedido pra cozinha, a cozinha vai marcando os itens como prontos conforme saem, e todas as telas do restaurante atualizam na hora — sem polling, sem precisar dar refresh.
 
@@ -6,7 +6,7 @@ Gestão de salão, pedidos e cozinha em tempo real para restaurantes. O garçom 
 
 ## Por que esse projeto existe
 
-A maioria dos projetos de portfólio sobre gestão de restaurante para no básico: um CRUD de cardápio. O TableFlow modela o ciclo operacional real de um restaurante: uma mesa passa por `disponível → ocupada → limpeza`, um pedido passa por `pendente → preparando → pronto → servido → pago`, e essas duas máquinas de estado são acopladas (pagar um pedido libera a mesa, cancelar também). Esse acoplamento, somado à propagação em tempo real pra três papéis diferentes olhando três telas diferentes, é a parte que vale a pena ler no código.
+A maioria dos projetos de portfólio sobre gestão de restaurante para no básico: um CRUD de cardápio. O The Pass modela o ciclo operacional real de um restaurante: uma mesa passa por `disponível → ocupada → limpeza`, um pedido passa por `pendente → preparando → pronto → servido → pago`, e essas duas máquinas de estado são acopladas (pagar um pedido libera a mesa, cancelar também). Esse acoplamento, somado à propagação em tempo real pra três papéis diferentes olhando três telas diferentes, é a parte que vale a pena ler no código.
 
 ## Arquitetura
 

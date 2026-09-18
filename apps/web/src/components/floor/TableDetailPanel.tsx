@@ -19,19 +19,21 @@ export function TableDetailPanel({
   const activeOrder = table.orders[0];
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-end bg-slate-900/30" onClick={onClose}>
+    <div className="fixed inset-0 z-20 flex justify-end bg-black/50" onClick={onClose}>
       <div
-        className="h-full w-full max-w-md overflow-y-auto bg-white p-6 shadow-xl"
+        className="h-full w-full max-w-md overflow-y-auto border-l-2 border-[#2a2523] bg-[#1e1b19] p-6 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">Table {table.tableNumber}</h2>
-            <p className="text-sm text-slate-500">
+            <h2 className="font-heading text-xl font-bold text-[#f5efe9]">
+              Table <span className="font-mono">{table.tableNumber}</span>
+            </h2>
+            <p className="text-sm text-[#a89e97]">
               {table.tableType.toLowerCase()} &middot; {table.seatCount} seats
             </p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-700">
+          <button onClick={onClose} className="text-[#a89e97] hover:text-[#ff5a3c]">
             Close
           </button>
         </div>
@@ -40,19 +42,19 @@ export function TableDetailPanel({
           <div className="mt-6">
             <div className="flex items-center justify-between">
               <Badge tone="info">{activeOrder.status}</Badge>
-              <span className="text-lg font-bold text-slate-900">
+              <span className="font-mono text-lg font-bold text-[#ff5a3c]">
                 ${Number(activeOrder.totalValue).toFixed(2)}
               </span>
             </div>
 
-            <ul className="mt-4 divide-y divide-slate-100">
+            <ul className="mt-4 divide-y-2 divide-[#2a2523]">
               {activeOrder.items.map((item) => (
                 <li key={item.id} className="flex items-center justify-between py-2 text-sm">
                   <div>
-                    <p className="font-medium text-slate-800">
-                      {item.quantity}x {item.menuItem.name}
+                    <p className="font-medium text-[#f5efe9]">
+                      <span className="font-mono">{item.quantity}x</span> {item.menuItem.name}
                     </p>
-                    {item.notes && <p className="text-xs text-slate-400">{item.notes}</p>}
+                    {item.notes && <p className="text-xs text-[#a89e97]">{item.notes}</p>}
                   </div>
                   <Badge tone={item.isReady ? "success" : "neutral"}>
                     {item.isReady ? "Ready" : "Preparing"}
@@ -97,7 +99,7 @@ export function TableDetailPanel({
           </div>
         ) : table.status === "CLEANING" ? (
           <div className="mt-6">
-            <p className="text-sm text-slate-500">This table is being cleaned.</p>
+            <p className="text-sm text-[#a89e97]">This table is being cleaned.</p>
             <Button
               className="mt-4 w-full"
               onClick={() =>

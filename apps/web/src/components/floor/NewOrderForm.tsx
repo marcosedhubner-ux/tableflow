@@ -33,7 +33,7 @@ export function NewOrderForm({ tableId, onCreated }: { tableId: string; onCreate
   }
 
   if (isLoading) {
-    return <p className="text-sm text-slate-400">Loading menu...</p>;
+    return <p className="text-sm text-[#a89e97]">Loading menu...</p>;
   }
 
   const availableItems = (menuItems ?? []).filter((item) => item.isAvailable);
@@ -43,7 +43,7 @@ export function NewOrderForm({ tableId, onCreated }: { tableId: string; onCreate
     <div className="space-y-5">
       {categories.map((category) => (
         <div key={category}>
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-[#a89e97]">
             {category}
           </h4>
           <div className="mt-2 space-y-2">
@@ -52,22 +52,26 @@ export function NewOrderForm({ tableId, onCreated }: { tableId: string; onCreate
               .map((item) => (
                 <div key={item.id} className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-sm font-medium text-slate-800">{item.name}</p>
-                    <p className="text-xs text-slate-400">${Number(item.unitPrice).toFixed(2)}</p>
+                    <p className="text-sm font-medium text-[#f5efe9]">{item.name}</p>
+                    <p className="font-mono text-xs text-[#a89e97]">
+                      ${Number(item.unitPrice).toFixed(2)}
+                    </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => setQuantity(item.id, (quantities[item.id] ?? 0) - 1)}
-                      className="h-7 w-7 rounded-full border border-slate-300 text-slate-500 hover:bg-slate-100"
+                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] hover:border-[#ff5a3c] hover:text-[#ff5a3c]"
                     >
                       -
                     </button>
-                    <span className="w-4 text-center text-sm">{quantities[item.id] ?? 0}</span>
+                    <span className="w-4 text-center font-mono text-sm text-[#f5efe9]">
+                      {quantities[item.id] ?? 0}
+                    </span>
                     <button
                       type="button"
                       onClick={() => setQuantity(item.id, (quantities[item.id] ?? 0) + 1)}
-                      className="h-7 w-7 rounded-full border border-slate-300 text-slate-500 hover:bg-slate-100"
+                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] hover:border-[#ff5a3c] hover:text-[#ff5a3c]"
                     >
                       +
                     </button>

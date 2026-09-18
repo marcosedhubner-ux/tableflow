@@ -1,6 +1,7 @@
 {
-  "name": "@tableflow/web",
+  "name": "@the-pass/web",
   "version": "0.1.0",
+  "description": "The Pass — real-time table, order and kitchen management for restaurants.",
   "private": true,
   "scripts": {
     "dev": "next dev",

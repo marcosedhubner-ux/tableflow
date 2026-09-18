@@ -10,10 +10,10 @@ const STATUS_TONE: Record<TableStatus, "success" | "warning" | "info" | "neutral
 };
 
 const STATUS_BORDER: Record<TableStatus, string> = {
-  AVAILABLE: "border-emerald-200",
-  OCCUPIED: "border-amber-200",
-  RESERVED: "border-sky-200",
-  CLEANING: "border-slate-300",
+  AVAILABLE: "border-[#3f6b52]",
+  OCCUPIED: "border-[#6b5a34]",
+  RESERVED: "border-[#6b4034]",
+  CLEANING: "border-[#2a2523]",
 };
 
 export function TableCard({
@@ -29,28 +29,32 @@ export function TableCard({
     <button
       onClick={() => onSelect(table)}
       className={clsx(
-        "flex flex-col gap-3 rounded-xl border-2 bg-white p-4 text-left shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md",
+        "flex flex-col gap-3 rounded-sm border-2 bg-[#1e1b19] p-4 text-left transition-colors hover:border-[#ff5a3c]",
         STATUS_BORDER[table.status]
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-slate-900">Table {table.tableNumber}</span>
+        <span className="font-heading text-lg font-bold text-[#f5efe9]">
+          Table <span className="font-mono">{table.tableNumber}</span>
+        </span>
         <Badge tone={STATUS_TONE[table.status]}>{table.status}</Badge>
       </div>
-      <div className="flex items-center gap-2 text-xs text-slate-500">
+      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-[#a89e97]">
         <span className="capitalize">{table.tableType.toLowerCase()}</span>
         <span>&middot;</span>
         <span>{table.seatCount} seats</span>
       </div>
       {activeOrder ? (
-        <div className="mt-1 flex items-center justify-between border-t border-slate-100 pt-3 text-sm">
-          <span className="text-slate-600">{activeOrder.items.length} items</span>
-          <span className="font-semibold text-slate-900">
+        <div className="mt-1 flex items-center justify-between border-t-2 border-[#2a2523] pt-3 text-sm">
+          <span className="text-[#a89e97]">{activeOrder.items.length} items</span>
+          <span className="font-mono font-semibold text-[#ff5a3c]">
             ${Number(activeOrder.totalValue).toFixed(2)}
           </span>
         </div>
       ) : (
-        <div className="mt-1 border-t border-slate-100 pt-3 text-sm text-slate-400">No order</div>
+        <div className="mt-1 border-t-2 border-[#2a2523] pt-3 text-sm text-[#6b6360]">
+          No order
+        </div>
       )}
     </button>
   );

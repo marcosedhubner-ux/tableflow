@@ -1,12 +1,12 @@
-# TableFlow
+# The Pass
 
-Real-time floor, order and kitchen management for restaurants. A server opens a table, sends the order to the kitchen, the kitchen marks items ready as they come off the line, and every screen in the building updates the instant it happens — no polling, no refresh.
+Table and kitchen status share one brain — pay the check and the table's free before the busser even gets there. A server opens a table, sends the order to the kitchen, the kitchen marks items ready as they come off the line, and every screen in the building updates the instant it happens — no polling, no refresh.
 
 [Leia em português](./README.pt-BR.md)
 
 ## Why this exists
 
-Most restaurant-management portfolio pieces stop at a CRUD menu editor. TableFlow instead models the actual operational loop a restaurant runs on: a table moves through `available → occupied → cleaning`, an order moves through `pending → preparing → ready → served → paid`, and those two state machines are coupled (paying an order frees the table, cancelling one does too). That coupling, plus the real-time fan-out to three different roles watching three different screens, is the part worth reading the code for.
+Most restaurant-management portfolio pieces stop at a CRUD menu editor. The Pass instead models the actual operational loop a restaurant runs on: a table moves through `available → occupied → cleaning`, an order moves through `pending → preparing → ready → served → paid`, and those two state machines are coupled (paying an order frees the table, cancelling one does too). That coupling, plus the real-time fan-out to three different roles watching three different screens, is the part worth reading the code for.
 
 ## Architecture
 

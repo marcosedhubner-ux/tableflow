@@ -4,18 +4,18 @@ import type { ReactNode } from "react";
 type BadgeTone = "neutral" | "success" | "warning" | "danger" | "info";
 
 const toneStyles: Record<BadgeTone, string> = {
-  neutral: "bg-slate-100 text-slate-700 ring-slate-300",
-  success: "bg-emerald-50 text-emerald-700 ring-emerald-300",
-  warning: "bg-amber-50 text-amber-700 ring-amber-300",
-  danger: "bg-rose-50 text-rose-700 ring-rose-300",
-  info: "bg-sky-50 text-sky-700 ring-sky-300",
+  neutral: "bg-[#2a2523] text-[#a89e97] border-[#3a332f]",
+  success: "bg-[rgba(74,158,110,0.14)] text-[#7fbf9a] border-[#3f6b52]",
+  warning: "bg-[rgba(224,168,58,0.14)] text-[#dcae5c] border-[#6b5a34]",
+  danger: "bg-[rgba(224,74,54,0.14)] text-[#e88a78] border-[#6b3a30]",
+  info: "bg-[rgba(255,90,60,0.12)] text-[#ff8a6a] border-[#6b4034]",
 };
 
 export function Badge({ tone = "neutral", children }: { tone?: BadgeTone; children: ReactNode }) {
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset",
+        "inline-flex items-center rounded-sm border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide",
         toneStyles[tone]
       )}
     >

@@ -15,11 +15,13 @@ export function OrderTicket({ order }: { order: Order }) {
   const minutes = elapsedMinutes(order.createdAt);
 
   return (
-    <div className="flex flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="flex flex-col rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] p-4">
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-slate-900">Table {order.table.tableNumber}</span>
+        <span className="font-heading text-lg font-bold text-[#f5efe9]">
+          Table <span className="font-mono">{order.table.tableNumber}</span>
+        </span>
         <Badge tone={minutes > 15 ? "danger" : minutes > 8 ? "warning" : "neutral"}>
-          {minutes} min
+          <span className="font-mono">{minutes} min</span>
         </Badge>
       </div>
 
@@ -27,10 +29,10 @@ export function OrderTicket({ order }: { order: Order }) {
         {order.items.map((item) => (
           <li key={item.id} className="flex items-start justify-between gap-2">
             <div>
-              <p className="text-sm font-medium text-slate-800">
-                {item.quantity}x {item.menuItem.name}
+              <p className="text-sm font-medium text-[#f5efe9]">
+                <span className="font-mono">{item.quantity}x</span> {item.menuItem.name}
               </p>
-              {item.notes && <p className="text-xs text-slate-400">{item.notes}</p>}
+              {item.notes && <p className="text-xs text-[#a89e97]">{item.notes}</p>}
             </div>
             {order.status === "PREPARING" && (
               <input
@@ -39,7 +41,7 @@ export function OrderTicket({ order }: { order: Order }) {
                 onChange={(event) =>
                   updateOrderItem.mutate({ itemId: item.id, isReady: event.target.checked })
                 }
-                className="mt-1 h-4 w-4 rounded border-slate-300"
+                className="mt-1 h-4 w-4 rounded-sm border-2 border-[#2a2523] accent-[#ff5a3c]"
               />
             )}
             {item.isReady && order.status !== "PREPARING" && <Badge tone="success">Ready</Badge>}
