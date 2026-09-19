@@ -61,7 +61,7 @@ export function NewOrderForm({ tableId, onCreated }: { tableId: string; onCreate
                     <button
                       type="button"
                       onClick={() => setQuantity(item.id, (quantities[item.id] ?? 0) - 1)}
-                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] hover:border-[#ff5a3c] hover:text-[#ff5a3c]"
+                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] transition-[border-color,color,transform] duration-150 ease-out hover:border-[#ff5a3c] hover:text-[#ff5a3c] active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5a3c] motion-reduce:transition-none motion-reduce:active:scale-100"
                     >
                       -
                     </button>
@@ -71,7 +71,7 @@ export function NewOrderForm({ tableId, onCreated }: { tableId: string; onCreate
                     <button
                       type="button"
                       onClick={() => setQuantity(item.id, (quantities[item.id] ?? 0) + 1)}
-                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] hover:border-[#ff5a3c] hover:text-[#ff5a3c]"
+                      className="h-7 w-7 rounded-sm border-2 border-[#2a2523] text-[#a89e97] transition-[border-color,color,transform] duration-150 ease-out hover:border-[#ff5a3c] hover:text-[#ff5a3c] active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5a3c] motion-reduce:transition-none motion-reduce:active:scale-100"
                     >
                       +
                     </button>

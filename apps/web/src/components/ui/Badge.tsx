@@ -11,14 +11,29 @@ const toneStyles: Record<BadgeTone, string> = {
   info: "bg-[rgba(255,90,60,0.12)] text-[#ff8a6a] border-[#6b4034]",
 };
 
-export function Badge({ tone = "neutral", children }: { tone?: BadgeTone; children: ReactNode }) {
+export function Badge({
+  tone = "neutral",
+  pulse = false,
+  children,
+}: {
+  tone?: BadgeTone;
+  /** Marks an actively in-progress status (e.g. a ticket being prepared) with a subtle LED-style breathe. */
+  pulse?: boolean;
+  children: ReactNode;
+}) {
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-sm border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide",
+        "inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide",
         toneStyles[tone]
       )}
     >
+      {pulse && (
+        <span
+          aria-hidden
+          className="h-1.5 w-1.5 shrink-0 rounded-full bg-current animate-led-breathe"
+        />
+      )}
       {children}
     </span>
   );

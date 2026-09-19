@@ -2,6 +2,7 @@
 
 import { AuthGuard } from "@/components/layout/AuthGuard";
 import { Card } from "@/components/ui/Card";
+import { ChartIcon } from "@/components/ui/icons";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { useDailySummary } from "@/hooks/useAnalytics";
 
@@ -33,7 +34,12 @@ function DashboardView() {
           Top menu items today
         </h2>
         {data.topMenuItems.length === 0 ? (
-          <p className="mt-3 text-sm text-[#a89e97]">No paid orders yet today.</p>
+          <div className="mt-3 flex flex-col items-center gap-2 py-6 text-center">
+            <span className="flex h-10 w-10 items-center justify-center rounded-sm border-2 border-[#2a2523] text-[#ff5a3c]">
+              <ChartIcon width={20} height={20} />
+            </span>
+            <p className="text-sm text-[#a89e97]">No paid orders yet today.</p>
+          </div>
         ) : (
           <ul className="mt-3 space-y-2">
             {data.topMenuItems.map((item) => (

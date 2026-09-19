@@ -79,7 +79,7 @@ export default function LoginPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="mt-1 w-full rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] px-3 py-2 text-sm text-[#f5efe9] outline-none focus:border-[#ff5a3c]"
+                className="mt-1 w-full rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] px-3 py-2 text-sm text-[#f5efe9] outline-none transition-colors duration-150 ease-out focus:border-[#ff5a3c] motion-reduce:transition-none"
               />
             </div>
             <div>
@@ -96,7 +96,7 @@ export default function LoginPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="mt-1 w-full rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] px-3 py-2 text-sm text-[#f5efe9] outline-none focus:border-[#ff5a3c]"
+                className="mt-1 w-full rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] px-3 py-2 text-sm text-[#f5efe9] outline-none transition-colors duration-150 ease-out focus:border-[#ff5a3c] motion-reduce:transition-none"
               />
             </div>
 

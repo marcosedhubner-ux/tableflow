@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { useUpdateOrderItem, useUpdateOrderStatus } from "@/hooks/useOrders";
@@ -13,14 +14,23 @@ export function OrderTicket({ order }: { order: Order }) {
   const updateOrderStatus = useUpdateOrderStatus();
   const updateOrderItem = useUpdateOrderItem();
   const minutes = elapsedMinutes(order.createdAt);
+  const isUrgent = minutes > 15;
 
   return (
-    <div className="flex flex-col rounded-sm border-2 border-[#2a2523] bg-[#1e1b19] p-4">
+    <div
+      className={clsx(
+        "flex flex-col rounded-sm border-2 bg-[#1e1b19] p-4 transition-colors duration-150",
+        isUrgent ? "border-[#6b3a30] animate-border-flicker" : "border-[#2a2523]"
+      )}
+    >
       <div className="flex items-center justify-between">
         <span className="font-heading text-lg font-bold text-[#f5efe9]">
           Table <span className="font-mono">{order.table.tableNumber}</span>
         </span>
-        <Badge tone={minutes > 15 ? "danger" : minutes > 8 ? "warning" : "neutral"}>
+        <Badge
+          tone={isUrgent ? "danger" : minutes > 8 ? "warning" : "neutral"}
+          pulse={order.status === "PREPARING"}
+        >
           <span className="font-mono">{minutes} min</span>
         </Badge>
       </div>

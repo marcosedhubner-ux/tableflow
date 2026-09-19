@@ -19,9 +19,12 @@ export function TableDetailPanel({
   const activeOrder = table.orders[0];
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-end bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-20 flex justify-end bg-black/50 animate-backdrop-in"
+      onClick={onClose}
+    >
       <div
-        className="h-full w-full max-w-md overflow-y-auto border-l-2 border-[#2a2523] bg-[#1e1b19] p-6 shadow-xl"
+        className="h-full w-full max-w-md overflow-y-auto border-l-2 border-[#2a2523] bg-[#1e1b19] p-6 shadow-xl animate-panel-in"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between">
@@ -33,7 +36,10 @@ export function TableDetailPanel({
               {table.tableType.toLowerCase()} &middot; {table.seatCount} seats
             </p>
           </div>
-          <button onClick={onClose} className="text-[#a89e97] hover:text-[#ff5a3c]">
+          <button
+            onClick={onClose}
+            className="text-[#a89e97] transition-colors duration-150 hover:text-[#ff5a3c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5a3c]"
+          >
             Close
           </button>
         </div>
@@ -41,7 +47,9 @@ export function TableDetailPanel({
         {activeOrder ? (
           <div className="mt-6">
             <div className="flex items-center justify-between">
-              <Badge tone="info">{activeOrder.status}</Badge>
+              <Badge tone="info" pulse={activeOrder.status === "PREPARING"}>
+                {activeOrder.status}
+              </Badge>
               <span className="font-mono text-lg font-bold text-[#ff5a3c]">
                 ${Number(activeOrder.totalValue).toFixed(2)}
               </span>
@@ -56,7 +64,10 @@ export function TableDetailPanel({
                     </p>
                     {item.notes && <p className="text-xs text-[#a89e97]">{item.notes}</p>}
                   </div>
-                  <Badge tone={item.isReady ? "success" : "neutral"}>
+                  <Badge
+                    tone={item.isReady ? "success" : "neutral"}
+                    pulse={!item.isReady && activeOrder.status === "PREPARING"}
+                  >
                     {item.isReady ? "Ready" : "Preparing"}
                   </Badge>
                 </li>

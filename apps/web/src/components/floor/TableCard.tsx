@@ -29,7 +29,10 @@ export function TableCard({
     <button
       onClick={() => onSelect(table)}
       className={clsx(
-        "flex flex-col gap-3 rounded-sm border-2 bg-[#1e1b19] p-4 text-left transition-colors hover:border-[#ff5a3c]",
+        "flex flex-col gap-3 rounded-sm border-2 bg-[#1e1b19] p-4 text-left",
+        "transition-[border-color,transform] duration-150 ease-out hover:border-[#ff5a3c] active:translate-y-px active:scale-[0.99]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5a3c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#151312]",
+        "motion-reduce:transition-none motion-reduce:active:scale-100",
         STATUS_BORDER[table.status]
       )}
     >
